@@ -1,0 +1,1 @@
+web: gunicorn em_commerce.wsgi:application
