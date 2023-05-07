@@ -4,6 +4,24 @@
 
 {% block content %}
 <div class="container-fluid">
+    <div class="row mt-5">
+        <div class="offset-1 text-black">
+            <a href="{% url 'home' %}" class="text-black">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <span> > </span>
+            <a href="{% url 'products' %}" class="text-black">
+                <i class="fas fa-tshirt"></i>
+                <span>All Products</span>
+            </a>
+            <span> > </span>
+            <a href="{% url 'products' %}?category={{ product.category.name }}"
+                class="text-black">{{ product.category.name }}</a>
+            <span> > </span>
+            <span><strong>{{ product.name }}</strong></span>
+        </div>
+    </div>
     <div class="row">
         <!-- Product Image -->
         <div class="col-12 col-md-5 col-lg-4 offset-lg-2 mr-3">
@@ -192,4 +210,36 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
+
+<script type="text/javascript">
+    $('#sort-selector').change(function () {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if (selectedVal != "reset") {
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
 {% endblock %}

@@ -59,6 +59,34 @@ html {
     transform: translate(-50%, -50%);
 }
 
+.category-name {
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    color: #000;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.category-name:hover {
+    text-decoration: none;
+    color: #FC2947
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
 
 /* Review product */
 
