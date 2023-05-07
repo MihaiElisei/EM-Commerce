@@ -42,7 +42,7 @@
   <title>EM-Commerce {% block extra_title %}{% endblock %}</title>
 
 <body>
-    <!-- Header Section -->
+  <!-- Header Section -->
   <header class="container-fluid">
     {% include 'includes/header.html' %}
   </header>
@@ -57,7 +57,8 @@
   {% block content %}
   {% endblock %}
 
-  
+  {% include 'includes/footer.html' %}
+
   {% block postloadjs %}
   {% endblock %}
 </body>

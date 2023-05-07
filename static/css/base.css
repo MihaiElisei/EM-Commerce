@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,500;1,200;1,300&family=Roboto:wght@100;300;400;500&display=swap');
+
+html {
+    height: 100%;
+}
+
+/* Main Page and utilities */
+.main-banner {
+    width: 100%;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link:hover {
+    text-decoration: none;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+
+.clearance-wrapper {
+    background-color: #FC2947;
+    height: 150px;
+}
+
+.deals-wrapper {
+    background-color: #7149C6;
+    height: 150px;
+}
+
+.new-arrivals-wrapper {
+    background-color: #FE6244;
+    height: 150px;
+}
+
+.main-subtitles {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+
+}
