@@ -42,7 +42,14 @@
                                             <div class="col-lg-8 col-md-6 col-sm-12">
                                                 <a href="{% url 'product_detail' cart_item.product.id %}"
                                                     class="title text-dark  d-block">{{ cart_item.product.name }}</a>
-
+                                                <em class="text-muted small d-inline">
+                                                    {% if cart_item.variations.all %}
+                                                    {% for item in cart_item.variations.all %}
+                                                    {{ item.variation_category | capfirst }} :
+                                                    {{ item.variation_value | capfirst }} <br>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </em>
                                                 <br>
                                             </div>
                                         </div>
