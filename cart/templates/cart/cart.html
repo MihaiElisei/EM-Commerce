@@ -41,10 +41,6 @@
                                             <div class="col-lg-8 col-md-6 col-sm-12">
                                                 <a href="{% url 'product_detail' cart_item.product.id %}"
                                                     class="title text-dark  d-block">{{ cart_item.product.name }}</a>
-                                                <em class="text-muted small d-inline">
-                                                    variations
-                                                </em>
-                                                <br>
                                             </div>
                                         </div>
                                     </td>
@@ -54,22 +50,14 @@
                                                 <a class=" btn btn-sm btn-black rounded-0" href="#" id="button-plus"> <i
                                                         class="fa fa-minus"></i> </a>
                                             </div>
-                                            <input type="text" class="form-control" value="#">
-                                            <div class="input-group-append">
-                                                <form action="#" method="POST">
-                                                    {% csrf_token %}
-                                                    <button class="btn btn-sm btn-black rounded-0" type="submit"
-                                                        id="button-minus"> <i class="fa fa-plus"
-                                                            style="height: 25px;"></i> </button>
-                                                </form>
-                                            </div>
+                                            <input type="text" class="form-control" value="{{ cart_item.quantity }}">
                                         </div>
                                     </td>
 
                                     <td>
                                         <div class="price-wrap">
-                                            <small class="price"><b> &euro; subtotal</b></small><br>
-                                            <small class="text-muted">&euro; total</small>
+                                            <small class="price"><b> &euro; {{ cart_item.sub_total }}</b></small><br>
+                                            <small class="text-muted">&euro; {{ cart_item.product.price }}</small>
                                         </div>
                                     </td>
                                     <td>
@@ -92,19 +80,19 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <p>Total price: <strong class="text-right">&euro; total</strong>
+                                <p>Total price: <strong class="text-right">&euro; {{ total | floatformat:2 }}</strong>
                                 </p>
                             </div>
                             <div>
-                                <p>VAT: <strong>&euro; vat</strong>
+                                <p>VAT: <strong>&euro; {{ vat | floatformat:2 }}</strong>
                                 </p>
                             </div>
                             <div>
-                                <p>Delivery: <strong>&euro; delivery</strong>
+                                <p>Delivery: <strong>&euro; {{ delivery | floatformat:2 }}</strong>
                                 </p>
                             </div>
                             <div>
-                                <p>Grand Total: <strong>&euro; grand total</strong>
+                                <p>Grand Total: <strong>&euro; {{ grand_total | floatformat:2 }}</strong>
                                 </p>
                             </div>
                             <hr>
@@ -131,4 +119,14 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
 {% endblock %}
