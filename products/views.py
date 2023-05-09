@@ -4,6 +4,8 @@ from django.db.models.functions import Lower
 from django.db.models import Q
 from .models import Product, ReviewRating, Category
 from .forms import ReviewForm
+from cart.models import CartItem
+from cart.views import _cart_id
 # Create your views here.
 
 
@@ -61,12 +63,19 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """ A view to show individual product details"""
+    try:
+        product = get_object_or_404(Product, pk=product_id)
+        in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(
+            request), product=product).exists()   # Check if the item is in cart
+    except Exception as e:
+        raise e
 
-    product = get_object_or_404(Product, pk=product_id)
     # Get the reviews
     reviews = ReviewRating.objects.filter(product_id=product.id, status=True)
+
     context = {
         'product': product,
+        'in_cart': in_cart,
         'reviews': reviews,
     }
 
