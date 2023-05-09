@@ -45,3 +45,23 @@ def cart_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
     }
     return context
+
+
+def counter(request):
+    """ A function that will count the 
+        number of products from cart
+    """
+    cart_count = 0
+
+    if 'admin' in request.path:
+        return {}
+    else:
+        try:
+            cart = Cart.objects.filter(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.all().filter(cart=cart[:1])
+            for cart_item in cart_items:
+                cart_count += cart_item.quantity
+        except Cart.DoesNotExist:
+            cart_count = 0
+
+    return dict(cart_count=cart_count)
