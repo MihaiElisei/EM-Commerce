@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-black my-0">EM-Commerce</h2>
+                    <h2 class="logo-font text-black my-0 text-center"><span class="logo-name">E.M</span>Commerce</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
@@ -75,6 +75,8 @@
     </div>
     <div class="col-12 col-lg-4  my-auto py-1 py-lg-0">
         <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <li class="list-inline-item"><small class="title text-muted">Welcome {{ user.username | capfirst }}!</small>
+            </li>
             <li class="list-inline-item dropdown">
                 <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -103,7 +105,11 @@
                         <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                         <p class="my-0">
                             {% if grand_total %}
+                            {% if cart_items %}
                             &euro;{{ grand_total|floatformat:2 }}
+                            {% else %}
+                            &euro;0.00
+                            {%endif%}
                             {% else %}
                             &euro;0.00
                             {% endif %}

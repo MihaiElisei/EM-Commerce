@@ -16,7 +16,10 @@
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                 <h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
                 <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><a href="#" class="text-muted">Some filter</a></li>
+                    {% for category in categories %}
+                    <li class="list-item"><a class="text-black"
+                            href="{% url 'products' %}?category={{ category.name }}">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">

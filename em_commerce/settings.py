@@ -84,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'products.contexts.category_links',
                 'cart.contexts.cart_contents',
+                'cart.contexts.counter',
             ],
         },
     },
