@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # Others
     'storages',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
